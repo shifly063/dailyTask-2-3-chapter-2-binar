@@ -366,24 +366,34 @@ let student = [
       ]
     }
   ]
-
   //(1) display/print person yang registered dibawah tahun 2022
+  console.log("============================= 1) display/print person yang registered dibawah tahun 2022 ===============================");
   for(let i = 0; i < student.length; i++){
     let part = student[i].registered.split('-')
     if(parseInt(part[0]) < 2022){
       console.log(student[i]);
     }
   }
-  // Array Methode
-  // console.log(student.map(person => person.registered)
-  // );
 
+  console.log("====== FUNCTION ======");
+  for(let i = 0; i < student.length; i++){
+    let part = student[i].registered.split('-')
+    morelessIf(parseInt(part[0]), 2022, student[i]);
+  }
+
+  console.log("======================================= 2) display person yang address nya Bali ========================================");
   // 2) display person yang address nya Bali
   for(let i = 0 ; i < student.length ; i++){
     if(student[i].address === "Bali"){
         console.log(student[i]);
     }
   }
+  console.log("====== FUNCTION =======");
+  // FUNCTION
+  for(let i = 0 ; i < student.length ; i++){
+    compareIf(student[i].address,"Bali",student[i]);
+  }
+  console.log("==== ARRAY METHODE ====");
   // Array Methode
   // console.log(student.filter(function(a)  {
   //   a.address === "Bali"
@@ -394,26 +404,39 @@ let student = [
   // })
   // console.log(filterAddress)
 
+  console.log("===================================== 3) display friends yang hobby nya football =======================================");
   // 3) display friends yang hobby nya football
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
         for(let k = 0; k < student[i].friends[j].hobby.length; k++){
             if(student[i].friends[j].hobby[k].hobby === "football"){
-                console.log(student[i].friends[j].name , "Teman ke -" , j+1 , "dari" , student[i].name);
+                console.log(student[i].friends[j]);
             }
         }
     }
   }
+
+  console.log("====== FUNCTION =======");
+  // FUNCTION
+  for(let i = 0 ; i < student.length ; i++){
+    for(let j = 0 ; j < student[i].friends.length; j++){
+        for(let k = 0; k < student[i].friends[j].hobby.length; k++){
+            (compareIf(student[i].friends[j].hobby[k].hobby , "football", (student[i].friends[j])));
+        }
+    }
+  }
+
+  console.log("==== ARRAY METHODE ====");
   // Array Methode
   // console.log(student.find(function(x) {
   //   return x.friends.map(function(y){
   //     return y.hobby.find(function(z){
-  //       // console.log(z.hobby);
   //       z.hobby === "football"
   //     })
   //   })
   // }));
 
+  console.log("======================================== 4) display hobby dari friends id 2 ============================================");
   // 4) display hobby dari friends id 2
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -424,11 +447,14 @@ let student = [
         }
     }
   }
+  
+  console.log("==== ARRAY METHODE ====");
   // Array Methode
   // console.log(student.filter((x)=> x.friends
   // .map((y)=> y.hobby
-  // .map((z)=> z.id === 2))));
+  // .filter((z)=> z.id === 2))));
 
+  console.log("======================= 5) display friends yang gender nya male dan mempunya hobby basketball ==========================");
   // 5) display friends yang gender nya male dan mempunya hobby basketball
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -440,6 +466,7 @@ let student = [
     }
   }
 
+  console.log("=========== 6) display friends yang isActive nya true dan gender nya female dan favorite fruit nya strawberry ==========");
   // 6) display friends yang isActive nya true dan gender nya female dan favorite fruit nya strawberry
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -449,6 +476,7 @@ let student = [
     }
   }
 
+  console.log("=============================== 7) display siapa saja yang mempunya teman name Theresia ================================");
   // 7) display siapa saja yang mempunya teman name Theresia
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -458,6 +486,7 @@ let student = [
     }
   }
 
+  console.log("============================== 8) display hobby id 1 dari friends yang isActive nya true ===============================");
   // 8) display hobby id 1 dari friends yang isActive nya true
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -469,6 +498,7 @@ let student = [
     }
   }
 
+  console.log("===== 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball ====");
   // 9) display person yang eye color nya brown dan favorite fruit nya banana dan mempunyai teman hobby basketball
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -480,6 +510,7 @@ let student = [
     }
   }
 
+  console.log("=== 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023 ===");
   // 10) display person yang mempunya friends gender male atau favorite fruit nya banana dan registered di tahun 2023
   for(let i = 0 ; i < student.length ; i++){
     for(let j = 0 ; j < student[i].friends.length; j++){
@@ -487,5 +518,17 @@ let student = [
       if(student[i].friends[j].gender === "male" || (student[i].favoriteFruit === 'banana' && parseInt(student[i].part[0]) === 2020)){
         console.log(student[i].name);
       }
+    }
+  }
+
+  function compareIf(data, compare, print){
+    if(data === compare){
+      return console.log(print)
+    }
+  }
+  
+  function morelessIf(data, compare, print){
+    if(data < compare){
+      return console.log(print)
     }
   }
